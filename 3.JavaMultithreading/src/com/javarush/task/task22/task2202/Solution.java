@@ -10,18 +10,21 @@ public class Solution {
 
     public static String getPartOfString(String string) {
         if(string == null) throw new TooShortStringException();
-
         int start = (string.indexOf(32)) + 1;
-        int temp1;
+
+//      Searching for index of 3-rd "space" int the string
+        int temp;
         int position = start;
         for(int i = 0; i < 3; i++) {
-            temp1 = string.indexOf(32, position);
-            if(temp1 == -1) throw new TooShortStringException();
-            position = temp1 + 1;
+            temp = string.indexOf(32, position);
+            if(temp == -1) throw new TooShortStringException();
+            position = temp + 1;
         }
-        int realFinish = string.indexOf(32, position);
-        if(realFinish != -1){
-             return string.substring(start, realFinish);
+
+//      If string has at least 1 more "space" - finish of our substring will be char before this "space"
+        int finish = string.indexOf(32, position);
+        if(finish != -1){
+             return string.substring(start, finish);
         }
         return string.substring(start);
     }
