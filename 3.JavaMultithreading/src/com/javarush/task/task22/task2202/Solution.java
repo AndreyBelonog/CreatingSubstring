@@ -12,16 +12,16 @@ public class Solution {
         if(string == null) throw new TooShortStringException();
 
         int start = (string.indexOf(32)) + 1;
-        int finish;
+        int temp;
         int position = start;
         for(int i = 0; i < 3; i++) {
-            finish = string.indexOf(32, position);
-            if(finish == -1) throw new TooShortStringException();
-            position = finish + 1;
+            temp = string.indexOf(32, position);
+            if(temp == -1) throw new TooShortStringException();
+            position = temp + 1;
         }
-        int temp = string.indexOf(32, position);
-        if(temp != -1){
-             return string.substring(start, temp);
+        int finish = string.indexOf(32, position);
+        if(finish != -1){
+             return string.substring(start, finish);
         }
         return string.substring(start);
     }
